@@ -146,7 +146,7 @@ OR
 
 func main() {
 	input := "hello world! my name is james bond."
-	output := Capitalize(input)
+	output := CapitalizeWord(input)
 	fmt.Println(output) // Output: "Hello World! My Name Is James Bond."
 }
 
