@@ -457,4 +457,8 @@ go run main.go
 
 ---
 
-*Built as part of the go-reloaded project at Zone01.*
+*Built as part of the go-reloaded project at Learn2Earn.*
+
+## Author
+
+**Emmanuel Usang** — [GitHub](https://github.com/Emmanuellsensai) [Portfolio](https://emmanuellsensai.github.io)
