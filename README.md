@@ -151,6 +151,34 @@ Two steps happen inside one return:
 
 The two functions are nested, so the output of `ToLower` feeds directly into `Title` without needing a separate variable.
 
+**Task 2:** write a function that takes a string as input and returns the string with the first letter of each word capitalized. For example, if the input is "hello world! my name is james bond.", the output should be "Hello World! My Name Is James Bond.".
+
+```go
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+// write a function that takes a string as input and returns the string with the first letter of each word capitalized. For example, if the input is "hello world", the output should be "Hello World".
+func Capitalize(word string) string {
+	words := strings.Fields(word)
+	for i, word := range words {
+		if len(word) > 0 {
+			words[i] = strings.ToUpper(string(word[0])) + word[1:]
+		}
+	}
+	return strings.Join(words, " ")
+}
+
+func main() {
+	input := "hello world! my name is james bond."
+	output := Capitalize(input)
+	fmt.Println(output) // Output: "Hello World! My Name Is James Bond."
+}
+```
+
 ---
 
 ## 4. Uppercase Last N Words
