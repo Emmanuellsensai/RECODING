@@ -362,29 +362,25 @@ import (
 	"strings"
 )
 
-func article(word string) string {
-	if strings.ContainsRune("aeiouAEIOUhH", rune(word[0])) {
-		return "An"
-	}
-	return "A"
-}
-
-func fixArticles(text string) string {
+func checkVowels(text string) string {
 	words := strings.Fields(text)
+
 	for i := 0; i < len(words)-1; i++ {
-		if words[i] == "a" || words[i] == "A" {
-			words[i] = article(words[i+1])
+
+		if (words[i] == "a" || words[i] == "A") && strings.ContainsRune("aeiouhAEIOUH", rune(words[i+1][0])) {
+			words[i] += "n"
 		}
 	}
 	return strings.Join(words, " ")
 }
 
 func main() {
-	input := "There it was. A amazing rock. A honest man. A book."
-	output := fixArticles(input)
-	fmt.Println("\nOutput:")
-	fmt.Println(output)
+	// text := "I have a apple and a orange."
+	text := "There it was. A amazing rock. A honest man. A book."
+	result := checkVowels(text)
+	fmt.Println(result)
 }
+
 ```
 
 **How it works:**
