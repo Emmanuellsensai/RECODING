@@ -161,7 +161,7 @@ import (
 	"strings"
 )
 
-// write a function that takes a string as input and returns the string with the first letter of each word capitalized. For example, if the input is "hello world", the output should be "Hello World".
+// write a function that takes a string as input and returns the string with the first letter of each word capitalized. For example, if the input is "hello world! my name is james bond.", the output should be "Hello World! My Name Is James Bond.".
 func Capitalize(word string) string {
 	words := strings.Fields(word)
 	for i, word := range words {
