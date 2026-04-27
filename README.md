@@ -215,7 +215,10 @@ import (
 )
 
 func isPunctuation(word string) bool {
-	return strings.ContainsRune("!?:;.,", rune(word[0]))
+	if strings.ContainsRune("!?:;.,", rune(word[0])) {
+		return true
+	}
+	return false
 }
 
 func main() {
