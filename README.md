@@ -253,19 +253,17 @@ Returns `true` if it's in the set, `false` if not. One line, no loop needed.
 ```
 
 ```go
-package main
-
-import (
-	"fmt"
-	"strings"
-)
-
 func fixPunctuation(word []string) string {
+	var sb strings.Builder
 	result := strings.Join(word, " ")
-	for _, p := range ".,!?:;" {
-		result = strings.ReplaceAll(result, " "+string(p), string(p))
+
+	for i := 0; i < len(result); i++ {
+		if result[i] == ' ' && i+1 < len(result) && strings.ContainsRune("!?,.:;", rune(result[i+1])) {
+			continue
+		}
+		sb.WriteByte(result[i])
 	}
-	return result
+	return sb.String()
 }
 
 func main() {
@@ -284,7 +282,7 @@ func main() {
 
 First, `strings.Join` glues all tokens together with spaces — giving you `"hello , world !"`.
 
-Then the loop ranges over each punctuation character in `".,!?:;"`. On each pass, `strings.ReplaceAll` finds every occurrence of space + that punctuation and removes the space.
+Then the loop ranges over each punctuation character in the string. On each pass,  finds every occurrence of space before a punctuation and removes the space then writes the string back without the space.
 
 Ranging directly over a string in Go gives you each character as a `rune`, so no need for a separate slice.
 
